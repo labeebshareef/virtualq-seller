@@ -190,7 +190,7 @@ const Signup = ({loginClick}) => {
               helperText={error?.fullName?.helperText}
               name="fullName"
               onChange={handleChange}
-              id="outlined-basic" label="Full name" variant="outlined" />
+              id="outlined-basic" label="Business name" variant="outlined" />
           </div>
           <div className='input-field'>
             <TextField
