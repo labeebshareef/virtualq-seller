@@ -9,6 +9,7 @@ import {Button, IconButton} from '@mui/material';
 import {sentOtp, signUp} from '../../APIServices';
 import {useNavigate} from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import './signup';
 
 const Signup = ({loginClick}) => {
   const [values, setValues] = useState({
@@ -161,13 +162,16 @@ const Signup = ({loginClick}) => {
     <div className='innerSection'>
       <div className='login-component'>
         {!next &&<>
-          <TextField
-            value={values.username}
-            error={error?.username?.error}
-            helperText={error?.username?.helperText}
-            name="username"
-            onChange={handleChange}
-            id="outlined-basic" label="Email" variant="outlined" />
+          <div className='input-field'>
+            <TextField
+              className='input-field'
+              value={values.username}
+              error={error?.username?.error}
+              helperText={error?.username?.helperText}
+              name="username"
+              onChange={handleChange}
+              id="outlined-basic" label="Email" variant="outlined" />
+          </div>
           <Button
             onClick={onNextClick}
             color="success"
@@ -178,28 +182,37 @@ const Signup = ({loginClick}) => {
           <IconButton aria-label="delete" onClick={onBackClick}>
             <ArrowBackIcon />
           </IconButton>
-          <TextField
-            value={values.fullName}
-            error={error?.fullName?.error}
-            helperText={error?.fullName?.helperText}
-            name="fullName"
-            onChange={handleChange}
-            id="outlined-basic" label="Full name" variant="outlined" />
-          <TextField
-            value={values.otp}
-            error={error?.otp?.error}
-            helperText={error?.otp?.helperText}
-            name="otp"
-            onChange={handleChange}
-            id="outlined-basic" label="Email OTP" variant="outlined" />
-          <TextField
-            value={values.password}
-            error={error?.password?.error}
-            helperText={error?.password?.helperText}
-            name="password"
-            type='password'
-            onChange={handleChange}
-            id="outlined-basic" label="Password" variant="outlined" />
+          <div className='input-field'>
+            <TextField
+              className='input-field'
+              value={values.fullName}
+              error={error?.fullName?.error}
+              helperText={error?.fullName?.helperText}
+              name="fullName"
+              onChange={handleChange}
+              id="outlined-basic" label="Full name" variant="outlined" />
+          </div>
+          <div className='input-field'>
+            <TextField
+              className='input-field'
+              value={values.otp}
+              error={error?.otp?.error}
+              helperText={error?.otp?.helperText}
+              name="otp"
+              onChange={handleChange}
+              id="outlined-basic" label="Email OTP" variant="outlined" />
+          </div>
+          <div className='input-field'>
+            <TextField
+              className='input-field'
+              value={values.password}
+              error={error?.password?.error}
+              helperText={error?.password?.helperText}
+              name="password"
+              type='password'
+              onChange={handleChange}
+              id="outlined-basic" label="Password" variant="outlined" />
+          </div>
           <Button
             onClick={onSignupClick}
             color="success"

@@ -70,7 +70,7 @@ export default function Timeslot() {
   return (
     <div className="userList">
       <div className="headerParent">
-        <h1 className="header">Timeslots
+        <h1 className="timeslot-header">Timeslots
           <div className="addButton"><Button
             onClick={handleOpen}
             variant="contained">Add Timeslot</Button></div>

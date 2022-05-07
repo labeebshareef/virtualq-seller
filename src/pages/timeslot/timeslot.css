@@ -1,5 +1,6 @@
 .userList {
   flex: 4;
+  margin-left: 20px;
 }
 
 .userListUser {
@@ -39,4 +40,8 @@
 }
 .header {
   position: relative;
+}
+.timeslot-header {
+  display: grid;
+  align-items: center;
 }

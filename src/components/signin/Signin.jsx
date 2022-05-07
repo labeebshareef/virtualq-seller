@@ -92,21 +92,27 @@ const Signin = ({loginClick}) => {
       {/* <div className="header"><h1>Login</h1></div> */}
       <div className='login-component'>
         {/* <div className="input"> */}
-        <TextField
-          value={values.username}
-          error={error.username.error}
-          helperText={error.username.helperText}
-          name="username"
-          onChange={handleChange}
-          id="outlined-basic" label="Email" variant="outlined" />
-        <TextField
-          value={values.password}
-          error={error.password.error}
-          helperText={error.password.helperText}
-          name="password"
-          type='password'
-          onChange={handleChange}
-          id="outlined-basic" label="Password" variant="outlined" />
+        <div className='input-field'>
+          <TextField
+
+            value={values.username}
+            error={error.username.error}
+            helperText={error.username.helperText}
+            name="username"
+            onChange={handleChange}
+            id="outlined-basic" label="Email" variant="outlined" />
+        </div>
+        <div className='input-field'>
+          <TextField
+            className='input-field'
+            value={values.password}
+            error={error.password.error}
+            helperText={error.password.helperText}
+            name="password"
+            type='password'
+            onChange={handleChange}
+            id="outlined-basic" label="Password" variant="outlined" />
+        </div>
         <Button
           onClick={onLoginClick}
           color="success"

@@ -4,7 +4,6 @@
     display: grid;
     height: 65%;
     /* background-color: white; */
-    width: 75%;
     border-radius: 9px;
 }
 
@@ -16,10 +15,14 @@
 
 .login-component {
     display: grid;
-    height: 70%;
+    /* height: 70%; */
     padding: 16px;
 }
 
 .textbox {
-    padding-top: '50px', 
+    padding-top: 50px, 
+}
+
+.input-field {
+    margin-bottom: 12px
 }
