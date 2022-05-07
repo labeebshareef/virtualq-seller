@@ -1,0 +1,23 @@
+.home{
+    flex: 4;
+    border: 1px;
+    border-color: brown;
+}
+
+.homeWidgets{
+    display: flex;
+    margin: 20px;
+}
+
+
+.rejectButton{
+    margin-left: 10px;
+}
+
+.accepted {
+    color: green;
+}
+
+.rejected {
+    color: red;
+}

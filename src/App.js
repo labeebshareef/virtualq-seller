@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import './App.css';
+import Appointment from './pages/appointment/appointment';
+import Layout from './components/layout/Layout';
+import Login from './pages/login/Login';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Timeslot from './pages/timeslot/Timeslot';
+import ProtectedRoute from './services/ProtectedRoutes';
+import SnackbarProvider from 'react-simple-snackbar';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SnackbarProvider>
+      <Router>
+        {/* <Topbar /> */}
+        {/* <div className="container"> */}
+        {/* <Sidebar /> */}
+        <Routes>
+          <Route exact path="/" element={<Login />}></Route>
+        </Routes>
+        <Routes>
+          <Route exact
+            element={<ProtectedRoute />}
+          >
+            <Route exact path="/appointment"
+              element={<Layout component={<Appointment />} />}>
+
+            </Route>
+            <Route path="/timeslot"
+              element={<Layout component={<Timeslot />} />}>
+            </Route>
+          </Route>
+        </Routes>
+        {/* </div> */}
+      </Router>
+    </SnackbarProvider>
   );
-}
+};
 
 export default App;

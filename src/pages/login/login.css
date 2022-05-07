@@ -1,0 +1,58 @@
+.main {
+    box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sideSection {
+    width: 40%;
+    height: 100%;
+    /* background-color: #a3a2a2; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftSection {
+    width: 60%;
+    height: 100%;
+    /* background-color: red; */
+    background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+}
+
+.logo {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 7px;
+
+}
+
+.logo-sub {
+    color: #756f6f;
+    text-align: center;
+    display: grid;
+    letter-spacing: 16px;
+}
+
+.loginComponent {
+    
+}
+
