@@ -46,13 +46,16 @@ const a11yProps = (index) => {
 
 const LoginComponent = () => {
   const [value, setValue] = React.useState(0);
+  const [disableButton, setDisableButton] = React.useState(false);
   const [openSnackbar] = useSnackbar();
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const loginClick = async (values) => {
+    setDisableButton(true);
     const bodyData = {
       email: values.username,
       password: values.password,
@@ -60,6 +63,7 @@ const LoginComponent = () => {
     await login(bodyData, successHandler, errorHandler);
     console.log('test', values);
   };
+
   const successHandler = (response) => {
     if (response.success) {
       localStorage.setItem('userLoggedIn', true);
@@ -72,10 +76,14 @@ const LoginComponent = () => {
     } else {
       openSnackbar(response.message);
     }
+    setDisableButton(false);
   };
+
   const errorHandler = async (response) => {
     openSnackbar(response.error.response.data.message);
+    setDisableButton(false);
   };
+
   return (
     <Box sx={{width: '100%', height: '60vh'}}>
       <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
@@ -86,7 +94,7 @@ const LoginComponent = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Signin loginClick={loginClick} />
+        <Signin loginClick={loginClick} disableButton={disableButton}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Signup/>

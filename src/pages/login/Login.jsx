@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import LoginComponent from '../../components/loginComponent/loginComponent';
 const Login = () => {
   const navigate = useNavigate();
+
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('userLoggedIn');
     if (isLoggedIn) {

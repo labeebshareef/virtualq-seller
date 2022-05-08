@@ -13,6 +13,7 @@ import {useNavigate} from 'react-router-dom';
 export default function Sidebar() {
   const navigate = useNavigate();
   const [active, setActive] = useState(null);
+
   useEffect(() => {
     console.log(window.location.pathname);
     if (window.location.pathname === '/appointment') {
@@ -21,6 +22,7 @@ export default function Sidebar() {
       setActive(1);
     }
   }, []);
+
   const filter = (e, filterId) => {
     setActive(filterId);
   };
@@ -50,11 +52,8 @@ export default function Sidebar() {
               <PermIdentity className="sidebarIcon" />
               Timeslots
             </li>
-
           </ul>
         </div>
-
-
       </div>
     </div>
   );

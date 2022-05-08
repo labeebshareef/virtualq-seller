@@ -15,7 +15,7 @@ import Button from '@mui/material/Button';
  * @return {component} returns component
  */
 function AppointmentRequest({appointmentData,
-  handleAcceptRejectClick, upcoming}) {
+  handleAcceptRejectClick, upcoming, ARButtonDisable}) {
   const columns = [
     {
       field: 'name',
@@ -62,24 +62,31 @@ function AppointmentRequest({appointmentData,
     {
       field: 'action',
       headerName: 'Action',
-      width: 150,
+      width: 230,
       renderCell: (params) => {
         if (params.row.requestStatus === DBCONSTANTS.PENDING) {
           if (upcoming) {
             return (
               <>
-                <Button variant="contained"
-                  color="success"
-                  onClick={() => handleAcceptRejectClick(params.row._id, true)}>
+                <div className='ar-button'>
+                  <Button variant="contained"
+                    color="success"
+                    disabled={ARButtonDisable}
+                    onClick={() =>
+                      handleAcceptRejectClick(params.row._id, true)}>
                   Accept
-                </Button>
-                <Button className="rejectButton"
-                  variant="contained"
-                  color="error"
-                  onClick={() =>
-                    handleAcceptRejectClick(params.row._id, false)}>
+                  </Button>
+                </div>
+                <div className='ar-button'>
+                  <Button className="rejectButton"
+                    variant="contained"
+                    color="error"
+                    disabled={ARButtonDisable}
+                    onClick={() =>
+                      handleAcceptRejectClick(params.row._id, false)}>
                   Reject
-                </Button>
+                  </Button>
+                </div>
               </>
             );
           } else {

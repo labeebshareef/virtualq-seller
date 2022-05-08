@@ -28,6 +28,8 @@ const Signup = ({loginClick}) => {
   });
 
   const [next, setNext] = useState(false);
+  const [disableNextButton, setDisableNextButton] = useState(false);
+  const [disableSignUpButton, setDisableSignUpButton] = useState(false);
   const [openSnackbar] = useSnackbar();
   const navigate = useNavigate();
 
@@ -43,7 +45,6 @@ const Signup = ({loginClick}) => {
     setValues({...values, [name]: value});
     console.log(values);
   };
-
 
   const onNextClick = (e) => {
     let errorCount = 0;
@@ -75,10 +76,10 @@ const Signup = ({loginClick}) => {
       const sentOtpBody = {
         email: values.username,
       };
+      setDisableNextButton(true);
       sentOtp(sentOtpBody, successHandler, errorHandler);
     }
   };
-
 
   const successHandler = (response) => {
     if (response.success) {
@@ -88,8 +89,8 @@ const Signup = ({loginClick}) => {
     } else {
       openSnackbar(response.message);
     }
+    setDisableNextButton(false);
   };
-
 
   const signupSuccessHandler = (response) => {
     if (response.success) {
@@ -103,18 +104,17 @@ const Signup = ({loginClick}) => {
     } else {
       openSnackbar(response.message);
     }
+    setDisableSignUpButton(false);
   };
-
 
   const errorHandler = async (response) => {
     openSnackbar(response.error.response.data.message);
+    setDisableNextButton(false);
   };
-
 
   const onBackClick = () => {
     setNext(false);
   };
-
 
   const onSignupClick = () => {
     let errorCount = 0;
@@ -149,6 +149,7 @@ const Signup = ({loginClick}) => {
       errorCount++;
     }
     if (errorCount === 0) {
+      setDisableSignUpButton(true);
       const bodyData = {
         emailOtp: values.otp,
         fullName: values.fullName,
@@ -174,6 +175,7 @@ const Signup = ({loginClick}) => {
           </div>
           <Button
             onClick={onNextClick}
+            disabled={disableNextButton}
             color="success"
             variant="contained">Next</Button>
         </>
@@ -215,6 +217,7 @@ const Signup = ({loginClick}) => {
           </div>
           <Button
             onClick={onSignupClick}
+            disabled={disableSignUpButton}
             color="success"
             variant="contained">Sign up</Button>
         </>

@@ -21,6 +21,7 @@ export default function Appointment() {
   const [previousappointmentData, setPreviousAppointmentData] = useState([]);
 
   const [value, setValue] = React.useState(0);
+  const [ARButtonDisable, setARButtonDisable] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -39,6 +40,7 @@ export default function Appointment() {
     // dispatch(showHideLoader(false));
   };
   const errorHandler = (response) => {
+    setARButtonDisable(false);
     // dispatch(showHideLoader(false));
   };
   const getAppointmentData = async () => {
@@ -49,9 +51,11 @@ export default function Appointment() {
   };
   const acceptRejectSuccessHandler = (response) => {
     getAppointmentData();
+    setARButtonDisable(false);
     // dispatch(showHideLoader(false));
   };
   const handleAcceptRejectClick = async (appointmentRequestId, accept) => {
+    setARButtonDisable(true);
     const bodyObject = {
       appointmentRequestId: appointmentRequestId,
       accept: accept,
@@ -82,11 +86,13 @@ export default function Appointment() {
           appointmentData={appointmentData}
           handleAcceptRejectClick={handleAcceptRejectClick}
           upcoming={true}
+          ARButtonDisable={ARButtonDisable}
         />}
         {value === 1 && <AppointmentRequest
           appointmentData={previousappointmentData}
           handleAcceptRejectClick={handleAcceptRejectClick}
           upcoming={false}
+          ARButtonDisable={ARButtonDisable}
         />}
 
       </Box>

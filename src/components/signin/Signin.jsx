@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
 import {Button} from '@mui/material';
 
-const Signin = ({loginClick}) => {
+const Signin = ({loginClick, disableButton}) => {
   const [values, setValues] = useState({
     username: '',
     password: '',
@@ -27,6 +27,7 @@ const Signin = ({loginClick}) => {
     setValues({...values, [name]: value});
     console.log(values);
   };
+
   const onLoginClick = (e) => {
     let errorCount = 0;
     if (!validateEmail(values.username)) {
@@ -67,26 +68,7 @@ const Signin = ({loginClick}) => {
     }
     loginClick(values);
   };
-  // const handleotpClick = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   setLoginError(false);
-  //   if (otpbutton) {
-  //     const data = await verifyOtp(otpValue);
-  //     if (data.success) {
-  //       localStorage.setItem("userLoggedIn", true);
-  //       history("/Livesession");
-  //     } else {
-  //       setOtpbutton(false);
-  //       setLoginError(data.message);
-  //     }
-  //     console.log(data, "daaaaaaaaaata");
-  //     setLoading(false);
-  //   } else {
-  //     setOtpbutton(await sentOtp(value));
-  //     setLoading(false);
-  //   }
-  // };
+
   return (
     <div className='innerSection'>
       {/* <div className="header"><h1>Login</h1></div> */}
@@ -94,7 +76,6 @@ const Signin = ({loginClick}) => {
         {/* <div className="input"> */}
         <div className='input-field'>
           <TextField
-
             value={values.username}
             error={error.username.error}
             helperText={error.username.helperText}
@@ -115,6 +96,7 @@ const Signin = ({loginClick}) => {
         </div>
         <Button
           onClick={onLoginClick}
+          disabled={disableButton}
           color="success"
           variant="contained">Login</Button>
         {/* </div> */}

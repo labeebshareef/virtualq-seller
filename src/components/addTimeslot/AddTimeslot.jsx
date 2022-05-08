@@ -64,6 +64,7 @@ function AddTimeslot({open, handleClose, handleAddTimeSlot}) {
       console.log(error);
       return;
     }
+
     if (values.slot <= 0) {
       setError({
         ...error,
@@ -77,6 +78,7 @@ function AddTimeslot({open, handleClose, handleAddTimeSlot}) {
     }
     handleAddTimeSlot(values);
   };
+
   const style = {
     position: 'absolute',
     top: '50%',
