@@ -14,6 +14,12 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const [active, setActive] = useState(null);
   useEffect(() => {
+    console.log(window.location.pathname);
+    if (window.location.pathname === '/appointment') {
+      setActive(0);
+    } else if (window.location.pathname === '/timeslot') {
+      setActive(1);
+    }
   }, []);
   const filter = (e, filterId) => {
     setActive(filterId);
